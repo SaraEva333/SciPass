@@ -1,0 +1,79 @@
+{% extends 'app/layout.html'%}
+{% block title%} Редактировать данные {% endblock %}
+{% block content %}
+  <h1 class="h1">Редактировать данные</h1>
+<!-- Код таблицы данных -->
+<div class="table-add">
+  <!-- Код таблицы данных -->
+<form  method="POST">
+  {% csrf_token %}
+    <table class="journal-table" id="journal-table">
+    <div class="error-message" id="error-message"></div>
+      <tr>
+        <td class="filter-title" >Название издания</td>
+        <td><input type="text" name="title" value="{{ Sciedit.title }}" id="title" required></td>
+      </tr>
+      <tr>
+        <td class="filter-title"  >ISSN</td>
+        <td ><input type="text" name="issn" value="{{ Sciedit.issn }}" id="issn"></td>
+      </tr>
+      <tr>
+        <td class="filter-title" >Импакт-фактор</td>
+        <td><input type="text" name="if_value" value="{{ Iff.if_value }}" id="if_value" required></td>
+      </tr>
+      <tr>
+        <td class="filter-title" >База данных импакт-фактора</td>
+        <td>
+          <select name="db_if" id="db_if" required>
+            <option value="Scopus" {% if Iff.db == 'Scopus' %}selected{% endif %}>Scopus</option>
+            <option value="WoS" {% if Iff.db == 'WoS' %}selected{% endif %}>WoS</option>
+            <option value="РИНЦ" {% if Iff.db == 'РИНЦ' %}selected{% endif %}>РИНЦ</option>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td class="filter-title" >Год обновления импакт-фактора</td>
+        <td><input type="number" name="year_if" value="{{ Iff.year }}" id="year_if" required></td>
+      </tr>
+      <tr>
+        <td class="filter-title" >Квартиль</td>
+        <td>
+          <select name="current_quartile" id="current_quartile" required>
+            <option value="K1" {% if Quart.current_quartile == 'K1' %}selected{% endif %}>K1</option>
+            <option value="K2" {% if Quart.current_quartile == 'K2' %}selected{% endif %}>K2</option>
+            <option value="K3" {% if Quart.current_quartile == 'K3' %}selected{% endif %}>K3</option>
+            <option value="Q1" {% if Quart.current_quartile == 'Q1' %}selected{% endif %}>Q1</option>
+            <option value="Q2" {% if Quart.current_quartile == 'Q2' %}selected{% endif %}>Q2</option>
+            <option value="Q3" {% if Quart.current_quartile == 'Q3' %}selected{% endif %}>Q3</option>
+            <option value="Q4" {% if Quart.current_quartile == 'Q4' %}selected{% endif %}>Q4</option>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td class="filter-title" >База данных квартиля</td>
+        <td>
+          <select name="db_quart" id="db_quart" required>
+            <option value="Scopus" {% if  Quart.db == 'Scopus' %}selected{% endif %}>Scopus</option>
+            <option value="WoS" {% if  Quart.db == 'WoS' %}selected{% endif %}>WoS</option>
+            <option value="РИНЦ" {% if  Quart.db == 'РИНЦ' %}selected{% endif %}>РИНЦ</option>
+            <option value="ВАК" {% if  Quart.db == 'ВАК' %}selected{% endif %}>ВАК</option>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td class="filter-title" >Год обновления квартиля</td>
+        <td><input type="number" value="{{ Quart.year }}" name="year_quart" id="year_quart" required></td>
+      </tr>
+      <tr>
+        <td class="filter-title" >Код специальности</td>
+        <td><input type="text" name="code" value="{{ Specialty.code }}" id="code" required></td>
+      </tr>
+      <tr>
+        <td class="filter-title" >Дата обновления специальности</td>
+        <td><input type="date" name="dat" value="{{ Specialty.dat|date:"Y-m-d" }}" id="dat" required></td>
+      </tr>
+    </table>
+  <a href="/"><input id="submit1" type="submit" value="Обновить данные" style="background-color: #113E4E; color: white;padding: 10px 20px; font-weight: 600;position: absolute; left: 1145px;top: 500px; width: 170px;"></a>
+</form>
+</div>
+{% endblock%}

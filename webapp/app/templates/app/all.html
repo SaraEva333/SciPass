@@ -1,0 +1,72 @@
+{% extends 'app/layout.html' %}
+
+{% block title %}Все данные об издании{% endblock %}
+
+{% block content %}
+  <h1 class="h1">Все данные об издании</h1>
+
+  <div class="table-add-all">
+    <form method="POST">
+      {% csrf_token %}
+      <table class="journal-table" id="journal-table">
+        <div class="error-message" id="error-message"></div>
+        <tbody>
+          <tr>
+            <td class="filter-title">Название издания</td>
+            <td>{{ Sciedit.title }}</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td class="filter-title">ISSN</td>
+            <td>{{ Sciedit.issn }}</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td class="filter-title">Scopus impact factor</td>
+            <td>{{ vscopus|safe }}</td>
+            <td>{{ yscopus|safe }}</td>
+          </tr>
+          <tr>
+            <td class="filter-title">Scopus quartile</td>
+            <td> {{ qscopus|safe }}</td>
+            <td> {{ qyscopus|safe }}</td>
+          </tr>
+          <tr>
+            <td class="filter-title">WOS impact factor</td>
+            <td> {{ vwos|safe }}</td>
+            <td> {{ ywos|safe }}</td>
+          </tr>
+          <tr>
+            <td class="filter-title">WoS quartile</td>
+            <td> {{ qwos|safe }}</td>
+            <td> {{ qywos|safe }}</td>
+          </tr>
+          <tr>
+            <td class="filter-title">РИНЦ impact factor</td>
+             <td> {{ vrinc|safe }}</td>
+            <td> {{ yrinc|safe }}</td>
+          </tr>
+          <tr>
+            <td class="filter-title">РИНЦ quartile</td>
+            <td> {{ qrinc|safe }}</td>
+            <td> {{ qyrinc|safe }}</td>
+          </tr>
+          <tr>
+            <td class="filter-title">ВАК quartile</td>
+               <td> {{ qvak|safe }}</td>
+            <td> {{ qyvak|safe }}</td>
+          </tr>
+          <tr>
+        <td class="filter-title" >Специальность</td>
+        <td>{{ scode|safe }}</td>
+        <td>{{ sdat|safe }}</td>
+  </tr>
+
+
+
+</tbody>
+</table>
+    </form>
+    </div>
+
+{% endblock%}

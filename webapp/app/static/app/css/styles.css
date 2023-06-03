@@ -1,0 +1,623 @@
+
+/* styles.css */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+.h1{
+    position: absolute;
+    left: 600px;
+  font-family: "Public Sans", sans-serif;
+  font-weight: 600;
+  color: #113E4E;
+}
+
+header {
+    background-color: #91BFD0;
+    padding: 10px 20px;
+    color: #113E4E;
+}
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 70px; /* Пример высоты хедера, можно изменить на нужное значение */
+}
+
+
+.logo img {
+    margin-left: 57px;
+    width: 82 px;
+    height: 66px;
+    margin-right: 10px;
+}
+
+.logo-text1 {
+    position: absolute;
+    left: 170px;
+    top: 30px;
+    font-size: 19.26px;
+    font-weight: 800;
+    align-items: center;
+}
+.logo-text2 {
+    position: absolute;
+    right: 00px;
+    top: 30px;
+    font-size: 19.26px;
+    font-weight: 800;
+    align-items: center;
+}
+
+/* Стили для обычного состояния ссылки */
+.a {
+  color: #113E4E; /* Цвет текста */
+  text-decoration: underline; /* Подчеркивание */
+   text-decoration-color: #113E4E;
+   margin-right: 50px;
+}
+
+/* Стили для наведения на ссылку */
+.a:hover {
+  color: white; /* Цвет текста при наведении */
+  text-decoration: underline; /* Подчеркивание при наведении */
+}
+
+/* Стили для нажатия на ссылку */
+.a:active {
+  color: #113E4E; /* Цвет текста при нажатии */
+  text-decoration: underline; /* Подчеркивание при нажатии */
+    text-decoration-color: #113E4E;
+}
+.user {
+    font-weight: 600;
+}
+.filter-form {
+
+  position: absolute;
+  left: 62px;
+  top: 144px;
+  width: 285px;
+  height: 452px;
+  background-color: #C8DFE8;
+  border: 1px solid #113E4E;
+  padding: 10px;
+  text-align: center;
+
+}
+.filter-title {
+ margin-bottom: 10px;
+  font-family: "Public Sans", sans-serif;
+  font-size: 17px;
+  font-weight: 600;
+  color: #113E4E;
+
+}
+.filter-column {
+  display: inline-block;
+  vertical-align: top;
+  margin-right: 0px;
+  margin-bottom: 8px;
+}
+.filter-group {
+  margin-bottom: 10px;
+}
+
+.filter-group input[type="checkbox"] {
+
+    margin-right: 5px;
+    display: none; /* скрыть сам чекбокс */
+}
+
+.filter-group label {
+
+  font-family: "Public Sans", sans-serif;
+  font-size: 14px;
+  color: #113E4E;
+}
+
+.main {
+    padding: 20px;
+}
+
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+
+}
+.filter-columns {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+.filter-column {
+
+  flex-basis: calc(33.33% - 10px);
+
+}
+
+.filter-option {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  align-items: center;
+  margin-right: 3px;
+  margin-left: 15px;
+  margin-bottom: 10px;
+}
+
+.filter-option label {
+    position: relative;
+    padding-left: 20px; /* для создания места под галочку */
+    cursor: pointer;
+}
+
+.filter-option label::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    width: 16px;
+    height: 16px;
+    border: 2px solid #113E4E;
+    background-color: transparent;
+    transition: background-color 0.2s ease-in-out;
+}
+
+.filter-option input[type="checkbox"]:checked + label::before {
+    background-color: #113E4E; /* изменение цвета галочки при выборе */
+}
+
+.filter-option label::after {
+    content: "";
+    position: absolute;
+    left: 7px;
+    top: 0px;
+    width: 5px;
+    height: 10px;
+    border-style: solid;
+    border-color: white;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+    opacity: 0;
+    transition: opacity 0.2s ease-in-out;
+}
+
+.filter-option input[type="checkbox"]:checked + label::after {
+    opacity: 1; /* показывать галочку при выборе */
+}
+
+
+
+.search-label {
+    font-weight: 600;
+}
+#title-input {
+    width: 200px;
+    margin-left: 10px;
+    padding: 5px;
+        margin-bottom: 20px;
+}
+#specialty-input {
+    width: 200px;
+    margin-left: 10px;
+    padding: 5px;
+        margin-bottom: 20px;
+}
+
+.search-button {
+      background-color: #113E4E;
+    color: white;
+    font-weight: 600;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    margin-right: 10px;
+    margin-top: -10px;
+}
+
+.table-container {
+ position: absolute;
+  left: 371px;
+  top: 144px;
+  width: 1090px;
+  height: 474px;
+  overflow: auto;
+
+}
+.table-add {
+ position: absolute;
+  left: 96px;
+  top: 187px;
+  width: 1314px;
+  height: 513px;
+}
+.table-add-all {
+ position: absolute;
+  left: 96px;
+  top: 187px;
+  width: 1314px;
+  height: 513px;
+  overflow: auto;
+}
+.table-add-delete {
+ position: absolute;
+  left: 96px;
+  top: 187px;
+  width: 1314px;
+  height: 513px;
+
+}
+.table-add-pdf {
+ position: absolute;
+  left: 92px;
+  top: 162px;
+  width: 1341px;
+  height: 513px;
+  overflow: auto;
+
+}
+
+.journal-table {
+  width: 100%;
+  background-color: #C8DFE8;
+  border: 1px solid #113E4E;
+  border-spacing: 0;
+  border-collapse: collapse;
+  text-align: center;
+
+}
+.journal-table-pdf {
+  width: 78.6%;
+  background-color: #C8DFE8;
+  border: 1px solid #113E4E;
+  border-spacing: 0;
+  border-collapse: collapse;
+  text-align: center;
+
+}
+.error-message {
+    width: 676px;
+  color: #fff;
+			background-color: #113E4E;
+			background-image: url('https://i.imgur.com/GnyDvKN.png');
+}
+
+.journal-table th,
+.journal-table td {
+  border: 1px solid #113E4E;
+  padding: 6px;
+}
+
+.journal-table th {
+  background-color: #C8DFE8;
+  font-weight: bold;
+}
+.journal-table tr.selected {
+    background-color: #e0e0e0;
+    /* Дополнительные стили для выделенных строк */
+}
+.journal-table th[colspan="2"] {
+  text-align: center;
+}
+
+.journal-table th:first-child,
+.journal-table td:first-child {
+  border-left: none;
+}
+
+.journal-table th:last-child,
+.journal-table td:last-child {
+  border-right: none;
+}
+
+.journal-table tr:not(:first-child) td {
+  border-top: none;
+}
+
+.journal-table th:first-child,
+.journal-table th:nth-child(2),
+.journal-table th:nth-child(3),
+.journal-table th:last-child {
+  width: 100px;
+}
+
+.journal-table th:nth-child(4),
+.journal-table th:nth-child(6),
+.journal-table th:nth-child(8) {
+  width: 80px;
+  height: 5px;
+}
+
+.journal-table th:nth-child(5),
+.journal-table th:nth-child(7),
+.journal-table th:nth-child(9) {
+  width: 100px;
+  height: 5px;
+}
+
+.journal-table th:nth-child(10),
+.journal-table th:nth-child(11) {
+  width: 120px;
+  height: 5px;
+}
+
+/* Стили для скроллбара */
+.journal-table::-webkit-scrollbar {
+  width: 8px;
+}
+
+.journal-table::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+.journal-table::-webkit-scrollbar-thumb {
+  background-color: #113E4E;
+  border-radius: 4px;
+}
+
+
+
+.journal-table-pdf th,
+.journal-table-pdf td {
+  border: 1px solid #113E4E;
+  padding: 6px;
+}
+
+.journal-table-pdf th {
+  background-color: #C8DFE8;
+  font-weight: bold;
+}
+.journal-table-pdf tr.selected {
+    background-color: #e0e0e0;
+    /* Дополнительные стили для выделенных строк */
+}
+.journal-table-pdf th[colspan="2"] {
+  text-align: center;
+}
+
+.journal-table-pdf th:first-child,
+.journal-table-pdf td:first-child {
+  border-left: none;
+}
+
+.journal-table-pdf th:last-child,
+.journal-table-pdf td:last-child {
+  border-right: none;
+}
+
+.journal-table-pdf tr:not(:first-child) td {
+  border-top: none;
+}
+
+.journal-table-pdf th:first-child,
+.journal-table-pdf th:nth-child(2),
+.journal-table-pdf th:nth-child(3),
+.journal-table-pdf th:last-child {
+  width: 100px;
+}
+
+.journal-table-pdf th:nth-child(4),
+.journal-table-pdf th:nth-child(6),
+.journal-table-pdf th:nth-child(8) {
+  width: 80px;
+  height: 5px;
+}
+
+.journal-table-pdf th:nth-child(5),
+.journal-table-pdf th:nth-child(7),
+.journal-table-pdf th:nth-child(9) {
+  width: 100px;
+  height: 5px;
+}
+
+.journal-table-pdf th:nth-child(10),
+.journal-table-pdf th:nth-child(11) {
+  width: 120px;
+  height: 5px;
+}
+
+/* Стили для скроллбара */
+.journal-table-pdf::-webkit-scrollbar {
+  width: 8px;
+}
+
+.journal-table-pdf::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+.journal-table-pdf::-webkit-scrollbar-thumb {
+  background-color: #113E4E;
+  border-radius: 4px;
+}
+
+.buttons-section {
+    margin-top: 20px;
+}
+
+.action-button1 {
+  position: absolute;
+  left: 71px;
+  top: 700px;
+  background-color: #113E4E;
+  color: white;
+  font-weight: 600;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  margin-right: 20px;
+  width: 206px;
+  height: 36px;
+}
+
+.action-button2 {
+  position: absolute;
+  left: 355px;
+  top: 700px;
+  background-color: #113E4E;
+  color: white;
+  font-weight: 600;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  margin-right: 20px;
+  width: 206px;
+  height: 36px;
+}
+
+.action-button3 {
+  position: absolute;
+  left: 652px;
+  top: 700px;
+  background-color: #113E4E;
+  color: white;
+  font-weight: 600;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  margin-right: 20px;
+  width: 206px;
+  height: 36px;
+}
+
+.action-button4 {
+  position: absolute;
+  left: 1208px;
+  top: 700px;
+  background-color: #113E4E;
+  color: white;
+  font-weight: 600;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  margin-right: 20px;
+  width: 206px;
+  height: 36px;
+}
+
+.action-button5 {
+  position: absolute;
+  left: 940px;
+  top: 700px;
+  background-color: #113E4E;
+  color: white;
+  font-weight: 600;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  width: 206px;
+  height: 36px;
+}
+
+.action-button4_add {
+  position: absolute;
+  left: 1183px;
+  top: 600px;
+    background-color: #113E4E;
+    color: white;
+    font-weight: 600;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+.action-button:last-child {
+    margin-right: 0;
+}
+input[type=checkbox]:checked {
+  color: #113E4E;
+}
+input {
+  width: 80%;
+}
+select {
+  width: 82%;
+  background-color: #fff;
+}
+
+.action-button0 {
+  position: absolute;
+  top: 268px;
+  right: 30px;
+  background-color: #113E4E;
+
+}
+
+.plus-icon {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background-color: #113E4E;
+  color: #fff;
+  font-size: 16px;
+  text-align: center;
+
+}
+
+.input-group {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			margin-bottom: 20px;
+
+.input-group label {
+			color: #113e4e;
+			font-size: 20px;
+			margin-bottom: 10px;
+			font-weight: bold;
+		}
+		.input-group input {
+			padding: 10px;
+			font-size: 16px;
+			border: 1px solid #ddd;
+			border-radius: 5px;
+			width: 100%;
+			max-width: 20px;
+			text-align: center;
+			outline: none;
+		}
+		.btn-submit {
+			background-color: #113e4e;
+			color: #fff;
+			border: none;
+			padding: 10px 20px;
+			font-size: 16px;
+			cursor: pointer;
+		}
+
+  .log {
+    width: 100%;
+    height: 76.77px;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1.58px solid #113E4E;
+  }
+
+  .log[type="text"]::placeholder,
+  .log[type="password"]::placeholder {
+    opacity: 0.5;
+  }
+
+  button.log {
+    background-color: #113E4E;
+    color: white;
+    font-weight: 600;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    margin-top: 10px;
+    width: 392px;
+    height: 77px;
+  }
+
+  .register-link {
+    display: block;
+    text-align: center;
+    margin-top: 10px;
+    color: #113E4E;
+    opacity: 0.78;
+  }

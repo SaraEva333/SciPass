@@ -1,0 +1,115 @@
+{% extends 'app/layout.html'%}
+
+{% block title %}Регистрация{% endblock %}
+{% block content %}
+<div class="input">
+    <h1 class="h1l">Регистрация</h1>
+
+   <form method="post">
+       {% csrf_token %}
+       <input class="log_i1" type="text" name="username" placeholder="Имя пользователя"><br>
+       <input class="log_i2" type="email" name="email" placeholder="Email пользователя"><br>
+       <input class="log_i3" type="password" name="password" placeholder="Пароль"><br>
+       <button class="log" class="btn btn-success" type="submit">Готово</button>
+    </form>
+    <a href="login" class="register-link">Войти</a>
+</div>
+
+<style>
+
+
+  .table-add-pdf {
+    width: 924px;
+    padding: 20px;
+    text-align: center;
+    background-color: #C8DFE8;
+  }
+
+  .h1 {
+    margin-bottom: 20px;
+  }
+
+  .error {
+    color: red;
+  }
+
+  form {
+    margin-top: 20px;
+  }
+
+  .log_i1 {
+  position: absolute;
+  left: 551px;
+  top: 266px;
+  justify-content: center;
+    align-items: center;
+    width: 25%;
+    height: 20.77px;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1.58px solid #113E4E;
+  }
+  .log_i2 {
+  position: absolute;
+  left: 551px;
+  top: 359px;
+  justify-content: center;
+    align-items: center;
+    width: 25%;
+    height: 20.77px;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1.58px solid #113E4E;
+  }
+.log_i3 {
+  position: absolute;
+  left: 551px;
+  top: 452px;
+  justify-content: center;
+    align-items: center;
+    width: 25%;
+    height: 20.77px;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1.58px solid #113E4E;
+  }
+  .log[type="text"]::placeholder,
+  .log[type="password"]::placeholder {
+    opacity: 0.5;
+  }
+
+button.log {
+  position: absolute;
+  left: 667px;
+  top: 545px;
+  background-color: #113E4E;
+  color: white;
+  font-weight: 600;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  margin-top: 10px;
+  width: 11%;
+  height: 47px;
+}
+
+.register-link {
+  position: absolute;
+  left: 725px;
+  top: 618px;
+  display: block;
+  text-align: center;
+  margin-top: 10px;
+  color: #113E4E;
+  opacity: 0.78;
+}
+  .h1l{
+    position: absolute;
+    left: 647px;
+     top: 153px;
+  font-family: "Public Sans", sans-serif;
+  font-weight: 600;
+  color: #113E4E;
+}
+</style>
+{% endblock %}

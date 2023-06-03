@@ -1,0 +1,215 @@
+{% extends 'app/layout.html'%}
+{% block title%} SciPass{% endblock%}
+{% block content%}
+
+  <main>
+    <div class="filters">
+  <!-- Фильтры -->
+  <form class="filter-form">
+    <h2 class="filter-title">Поиск по названию</h2>
+    <input type="text" id="title-input">
+    <h2 class="filter-title">Фильтры</h2>
+    <div class="filter-columns">
+      <div class="filter-column">
+        <div class="filter-option">
+          <div class="filter-group">
+            <input type="checkbox" id="scopus-filter" class="filter-checkbox">
+            <label for="scopus-filter">Scopus</label>
+          </div>
+        </div>
+        <div class="filter-option">
+          <div class="filter-group">
+            <input type="checkbox" id="wos-filter" class="filter-checkbox">
+            <label for="wos-filter">WoS</label>
+          </div>
+        </div>
+        <div class="filter-option">
+          <div class="filter-group">
+            <input type="checkbox" id="rinc-filter" class="filter-checkbox">
+            <label for="rinc-filter">РИНЦ</label>
+          </div>
+        </div>
+        <div class="filter-option">
+          <div class="filter-group">
+            <input type="checkbox" id="vak-filter" class="filter-checkbox">
+            <label for="vak-filter">ВАК</label>
+          </div>
+        </div>
+      </div>
+
+      <div class="filter-column">
+        <div class="filter-option">
+          <div class="filter-group">
+            <input type="checkbox" id="q1-filter" class="filter-checkbox">
+            <label for="q1-filter">Q1</label>
+          </div>
+        </div>
+        <div class="filter-option">
+          <div class="filter-group">
+            <input type="checkbox" id="q2-filter" class="filter-checkbox">
+            <label for="q2-filter">Q2</label>
+          </div>
+        </div>
+        <div class="filter-option">
+          <div class="filter-group">
+            <input type="checkbox" id="q3-filter" class="filter-checkbox">
+            <label for="q3-filter">Q3</label>
+          </div>
+        </div>
+        <div class="filter-option">
+          <div class="filter-group">
+            <input type="checkbox" id="q4-filter" class="filter-checkbox">
+            <label for="q4-filter">Q4</label>
+          </div>
+        </div>
+      </div>
+
+      <div class="filter-column">
+        <div class="filter-option">
+          <div class="filter-group">
+            <input type="checkbox" id="k1-filter" class="filter-checkbox">
+            <label for="k1-filter">К1</label>
+          </div>
+        </div>
+        <div class="filter-option">
+          <div class="filter-group">
+            <input type="checkbox" id="k2-filter" class="filter-checkbox">
+            <label for="k2-filter">К2</label>
+          </div>
+        </div>
+ <div class="filter-option">
+          <div class="filter-group">
+            <input type="checkbox" id="k3-filter" class="filter-checkbox">
+            <label for="k3-filter">К3</label>
+          </div>
+        </div>
+      </div>
+    </div>
+    <h2 class="filter-title">Поиск по специальности</h2>
+    <input type="text" id="specialty-input">
+    <button id="search-button" class="search-button">Искать</button>
+  </form>
+</div>
+
+<div class="table-container">
+  <!-- Код таблицы данных -->
+<table class="journal-table">
+        <!-- Table header -->
+        <thead>
+            <tr>
+
+                <th rowspan="2">№</th>
+                <th rowspan="2">Название</th>
+                <th rowspan="2">ISSN</th>
+                <th colspan="2">Scopus</th>
+                <th colspan="2">WoS</th>
+                <th colspan="2">РИНЦ</th>
+                <th colspan="1">ВАК</th>
+                <th rowspan="2">Специ- альность</th>
+                <th rowspan="2">Дата получения</th>
+                                <th rowspan="2"><input type="checkbox" id="select-all"></th>
+            </tr>
+            <tr>
+                <th>IF</th>
+                <th>Квартиль</th>
+                <th>IF</th>
+                <th>Квартиль</th>
+                <th>IF</th>
+                <th>Квартиль</th>
+                <th>Квартиль</th>
+            </tr>
+        </thead>
+    <tbody>
+        {% if Sciedit %}
+        {% for item in Sciedit %}
+        <tr>
+
+                <td>{{ forloop.counter }}</td>
+        <td>{{ item.title }}</td>
+            {% if item.issn != "" %}
+        <td>{{ item.issn }}</td>
+            {% else %}
+            <td></td>
+            {% endif %}
+             {% for iff in item.iff_set.all %}
+            {% if iff.db == 'Scopus' %}
+        <td>{{ item.iff_set.first.if_value }}</td>
+            {% else %}
+            <td></td>
+             {% endif %}
+            {% endfor %}
+
+            {% for quart in item.quart_set.all %}
+            {% if quart.db == 'Scopus' %}
+        <td>{{ item.quart_set.first.current_quartile }}</td>
+            {% else %}
+            <td></td>
+             {% endif %}
+            {% endfor %}
+
+            {% for iff in item.iff_set.all %}
+            {% if iff.db == 'WoS' %}
+        <td>{{ item.iff_set.first.if_value }}</td>
+            {% else %}
+            <td></td>
+             {% endif %}
+            {% endfor %}
+
+             {% for quart in item.quart_set.all %}
+            {% if quart.db == 'WoS' %}
+        <td>{{ item.quart_set.first.current_quartile }}</td>
+            {% else %}
+            <td></td>
+             {% endif %}
+            {% endfor %}
+
+            {% for iff in item.iff_set.all %}
+            {% if iff.db == 'РИНЦ' %}
+        <td>{{ item.iff_set.first.if_value }}</td>
+            {% else %}
+            <td></td>
+             {% endif %}
+            {% endfor %}
+
+             {% for quart in item.quart_set.all %}
+            {% if quart.db == 'РИНЦ' %}
+        <td>{{ item.quart_set.first.current_quartile }}</td>
+            {% else %}
+            <td></td>
+             {% endif %}
+            {% endfor %}
+
+            {% for quart in item.quart_set.all %}
+            {% if quart.db == 'ВАК' %}
+        <td>{{ item.quart_set.first.current_quartile }}</td>
+            {% else %}
+            <td></td>
+             {% endif %}
+            {% endfor %}
+
+        <td>{{ item.specialty_set.first.code }}</td>
+        <td>{{ item.specialty_set.first.dat }}</td>
+        <td><input type="checkbox" class="select-row"></td>
+        </tr>
+        {% endfor %}
+        {% else %}
+        <td>Данные о научных изданиях в таблицу не добавлены.</td>
+        {% endif %}
+</tbody>
+
+    </table>
+</div>
+
+{% if user.is_authenticated %}
+    <div class="buttons-section">
+        <a href="add"><button  class="action-button1">Добавить данные</button></a>
+        <button id="view-history-btn" class="action-button2">Посмотреть все данные</button>
+        <button id="edit-data-btn" class="action-button3">Редактировать данные</button>
+        <button id="export-data-btn" class="action-button4">Экспорт результатов</button>
+        <button id="delete-data-btn" class="action-button5">Удалить данные</button>
+  {% endif %}
+    </div>
+    </div>
+  </main>
+{% endblock%}
+

@@ -1,0 +1,81 @@
+{% extends 'app/layout.html'%}
+{% block title%} Добавить данные {% endblock%}
+{% block content%}
+<h1 class="h1"> Добавить данные</h1>
+<div class="table-add">
+  <!-- Код таблицы данных -->
+<form  method="POST">
+  {% csrf_token %}
+    <table class="journal-table" id="journal-table">
+    <div class="error-message" id="error-message"></div>
+      <tr>
+        <td class="filter-title" >Название издания</td>
+        <td><input type="text" name="title" id="title" required></td>
+      </tr>
+      <tr>
+        <td class="filter-title"  >ISSN</td>
+        <td ><input type="text" name="issn" id="issn"></td>
+      </tr>
+      <tr>
+        <td class="filter-title" >Импакт-фактор</td>
+        <td><input type="text" name="if_value" id="if_value" required></td>
+      </tr>
+      <tr>
+        <td class="filter-title" >База данных импакт-фактора</td>
+        <td>
+          <select name="db_if" id="db_if" required>
+            <option value="Scopus">Scopus</option>
+            <option value="WoS">WoS</option>
+            <option value="РИНЦ">РИНЦ</option>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td class="filter-title" >Год обновления импакт-фактора</td>
+        <td><input type="number" name="year_if" id="year_if" required></td>
+      </tr>
+      <tr>
+        <td class="filter-title" >Квартиль</td>
+
+        <td>
+          <select name="current_quartile" id="current_quartile" required>
+            <option value="K1">K1</option>
+            <option value="K2">K2</option>
+            <option value="K3">K3</option>
+            <option value="Q1">Q1</option>
+            <option value="Q2">Q2</option>
+            <option value="Q3">Q3</option>
+            <option value="Q4">Q4</option>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td class="filter-title" >База данных квартиля</td>
+        <td>
+          <select name="db_quart" id="db_quart" required>
+            <option value="Scopus">Scopus</option>
+            <option value="WoS">WoS</option>
+            <option value="РИНЦ">РИНЦ</option>
+            <option value="ВАК">ВАК</option>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td class="filter-title" >Год обновления квартиля</td>
+        <td><input type="number" name="year_quart" id="year_quart" required></td>
+      </tr>
+      <tr>
+        <td class="filter-title" >Код специальности</td>
+        <td><input type="text" name="code" id="code" required></td>
+      </tr>
+      <tr>
+        <td class="filter-title" >Дата обновления специальности</td>
+        <td><input type="date" name="dat" id="dat" required></td>
+      </tr>
+    </table>
+  <a href="/"><input id="submit1" type="submit" value="Добавить данные" style="background-color: #113E4E; color: white;padding: 10px 20px; font-weight: 600;position: absolute; left: 1145px;top: 500px; width: 170px;"></a>
+</form>
+<a href="addPDF"><button style="background-color: #113E4E; color: white;padding: 10px 20px; font-weight: 600;position: absolute;top: 500px;">Загрузить из PDF</button></a>
+</div>
+
+{% endblock%}

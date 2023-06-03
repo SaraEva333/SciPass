@@ -1,0 +1,120 @@
+{% extends 'app/layout.html'%}
+{% block title%} SciPass{% endblock%}
+{% block content%}
+
+
+
+<!-- edit.html --><div class="table-add">
+  <!-- Код таблицы данных -->
+<table class="journal-table">
+        <!-- Table header -->
+    <form  method="POST">
+        <thead>
+            <tr>
+                <th rowspan="2">№</th>
+                <th rowspan="2">Название</th>
+                <th rowspan="2">ISSN</th>
+                <th colspan="4">Scopus</th>
+                <th colspan="4">WoS</th>
+                <th colspan="4">РИНЦ</th>
+                <th colspan="2">ВАК</th>
+                <th rowspan="2">Специальность</th>
+                <th rowspan="2">Дата получения</th>
+            </tr>
+            <tr>
+                <th colspan="2">IF</th>
+                <th colspan="2">Квартиль</th>
+                <th colspan="2">IF</th>
+                <th colspan="2">Квартиль</th>
+                <th colspan="2">IF</th>
+                <th colspan="2">Квартиль</th>
+                <th colspan="2">Квартиль</th>
+            </tr>
+        </thead>
+            {% if Sciedit %}
+        {% for item in Sciedit %}
+        <tr>
+
+                <td>{{ forloop.counter }}</td>
+        <td>{{ item.title }}</td>
+            {% if item.issn != "" %}
+        <td>{{ item.issn }}</td>
+            {% else %}
+            <td></td>
+            {% endif %}
+             {% for iff in item.iff_set.all %}
+            {% if iff.db == 'Scopus' %}
+        <td>{{ item.iff_set.first.if_value }}</td><td>{{ item.iff_set.first.year }}</td>
+            {% else %}
+            <td></td>
+            <td></td>
+             {% endif %}
+            {% endfor %}
+
+            {% for quart in item.quart_set.all %}
+            {% if quart.db == 'Scopus' %}
+        <td>{{ item.quart_set.first.current_quartile }}</td><td>{{ item.quart_set.first.year }}</td>
+            {% else %}
+            <td></td> <td></td>
+             {% endif %}
+            {% endfor %}
+
+            {% for iff in item.iff_set.all %}
+            {% if iff.db == 'WoS' %}
+        <td>{{ item.iff_set.first.if_value }}</td>        <td>{{ item.iff_set.first.year }}</td>
+            {% else %}
+            <td></td><td></td>
+             {% endif %}
+            {% endfor %}
+
+             {% for quart in item.quart_set.all %}
+            {% if quart.db == 'WoS' %}
+        <td>{{ item.quart_set.first.current_quartile }}</td><td>{{ item.quart_set.first.year }}</td>
+            {% else %}
+            <td></td><td></td>
+             {% endif %}
+            {% endfor %}
+
+            {% for iff in item.iff_set.all %}
+            {% if iff.db == 'РИНЦ' %}
+        <td>{{ item.iff_set.first.if_value }}</td><td>{{ item.iff_set.first.year}}</td>
+            {% else %}
+            <td></td><td></td>
+             {% endif %}
+            {% endfor %}
+
+             {% for quart in item.quart_set.all %}
+            {% if quart.db == 'РИНЦ' %}
+        <td>{{ item.quart_set.first.current_quartile }}</td><td>{{ item.quart_set.first.year}}</td>
+            {% else %}
+            <td></td><td></td>
+             {% endif %}
+            {% endfor %}
+
+            {% for quart in item.quart_set.all %}
+            {% if quart.db == 'ВАК' %}
+        <td>{{ item.quart_set.first.current_quartile }}</td><td>{{ item.quart_set.first.year}}</td>
+            {% else %}
+            <td></td><td></td>
+             {% endif %}
+            {% endfor %}
+
+        <td>{{ item.specialty_set.first.code }}</td>
+        <td>{{ item.specialty_set.first.dat }}</td>
+        </tr>
+        {% endfor %}
+        {% else %}
+        <td>Данные о научных изданиях в таблицу не добавлены.</td>
+        {% endif %}
+</tbody>
+
+    </table>
+</div>
+
+    </div>
+<div class="buttons-section">
+    <a href="exportData" download=exported_data.pdf class="action-button4">Скачать</a>
+</div>
+  </div>
+{% endblock%}
+
