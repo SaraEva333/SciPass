@@ -1,7 +1,7 @@
 function getSelectedRows() {
-  const visibleRows = document.querySelectorAll('.journal-table tbody tr:not([style*="display: none"])');
+  const allRows = document.querySelectorAll('.journal-table tbody tr');
   const selectedRows = [];
-  visibleRows.forEach((row, index) => {
+  allRows.forEach((row, index) => {
     const checkbox = row.querySelector('.select-row');
     if (checkbox.checked) {
       selectedRows.push(index);
@@ -9,6 +9,7 @@ function getSelectedRows() {
   });
   return selectedRows;
 }
+
 
 
 const selectAllCheckbox = document.getElementById('select-all');

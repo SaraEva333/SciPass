@@ -110,8 +110,12 @@ def editView(request, pk):
         quart.save()
 
         specialty.code = code
-        specialty.dat = dat
+        if dat != "":
+            specialty.dat = dat
+        else:
+            specialty.dat = None
         specialty.save()
+
 
         return redirect('/')
 
@@ -288,7 +292,8 @@ def exportView(request, pk):
         combined_rsci_if = ", ".join(set(f"{item.iff_set.filter(db='РИНЦ').first().if_value} {item.iff_set.filter(db='РИНЦ').first().year}" if item.iff_set.filter(db='РИНЦ').exists() else "" for item in publications))
         combined_rsci_quart = ", ".join(set(f"{item.quart_set.filter(db='РИНЦ').first().current_quartile} {item.quart_set.filter(db='РИНЦ').first().year}" if item.quart_set.filter(db='РИНЦ').exists() else "" for item in publications))
         combined_vac_quart = ", ".join(set(f"{item.quart_set.filter(db='ВАК').first().current_quartile} {item.quart_set.filter(db='ВАК').first().year}" if item.quart_set.filter(db='ВАК').exists() else "" for item in publications))
-        combined_specializations = ", ".join(set(f"{item.specialty_set.first().code}, {item.specialty_set.first().dat}" if item.specialty_set.exists() else "" for item in publications))
+        combined_specializations = ", ".join(set(f"{item.specialty_set.first().code}, {item.specialty_set.first().dat}" if item.specialty_set.exists() and item.specialty_set.first().code != "" and item.specialty_set.first().dat is not None else "" for item in publications))
+
 
         elements.append(Paragraph(f'<b>Title of the publication:</b> {combined_title}', styles['Normal']))
         elements.append(Paragraph(f'<b>ISSN:</b> {combined_issn}', styles['Normal']))
@@ -612,8 +617,17 @@ def addPDFView(request):
                     dat = request.POST.get('dat')
 
                     Specialty.objects.create(spid=new_spid, code=code, dat=dat, seid=seid)
+                else:
+                    # Get the maximum spid value
+                    max_spid = Specialty.objects.aggregate(Max('spid'))['spid__max']
+
+                    # Increment the max_spid by 1 to get the new spid
+                    new_spid = max_spid + 1 if max_spid is not None else 1
+
+                    Specialty.objects.create(spid=new_spid, code="", dat=None, seid=seid)
 
             return redirect('/')
+
 
     else:
         return render(request, 'app/pdf.html')
